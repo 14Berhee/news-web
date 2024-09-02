@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="flex max-w-6xl m-auto mt-8">
+    <div className="flex max-w-6xl m-auto mt-8 h-[100px] items-center">
       <div className="mr-2">
         <svg
           width="36"
@@ -29,7 +29,7 @@ export default function Header() {
       </div>
       <div className="flex">
         <p>Meta</p>
-        <p>Blog</p>
+        <p className="w-[52px] h-6 font-black">Blog</p>
       </div>
       <div className="flex max-w-2xl ml-[498px] gap-10 ">
         <p>Home</p>
