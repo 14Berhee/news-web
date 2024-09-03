@@ -1,6 +1,5 @@
 import useSWR from "swr";
-import moment from "moment";
-const url = " https://dev.to/api/articles";
+const url = "https://dev.to/api/articles?state=rising";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Trending = () => {
@@ -13,20 +12,15 @@ const Trending = () => {
     return <p>Sorry we are connot fulfill this</p>;
   }
 
-  const trendingBlogs = data.slice(0, 4);
-
   return (
-    <div className="grid grid-cols-3 mt-36 ">
-      {data.map((blog) => {
+    <div className="flex max-w-[1231px] m-auto ">
+      {data.slice(0, 4).map((blog2) => {
         return (
-          <BlogCard
-            key={blog.id}
-            tags={blog.tag_list}
-            image={blog.cover_image}
-            title={blog.title}
-            date={blog.published_at}
-            user={blog.user.profile_image}
-            name={blog.user.name}
+          <BlogTrending
+            key={blog2.id}
+            image={blog2.cover_image}
+            title={blog2.title}
+            tags={blog2.tag_list}
           />
         );
       })}
@@ -36,29 +30,34 @@ const Trending = () => {
 
 export default Trending;
 
-const BlogCard = (props) => {
-  const { image, title, date, tags, user, name } = props;
-  console.log(tags);
+const BlogTrending = (props) => {
+  const { image, title, tags } = props;
+
   return (
-    <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto mt-5 ">
-      <img src={image} className="h-60 rounded-lg mt-4 " />
-      <div className="flex flex-wrap gap-2  ">
-        {tags.map((tag) => (
-          <p className="mb-4 bg-[#4B6BFB0D] text-[#4B6BFB] rounded-lg mt-7  w-fit py-1 px-[10px]  ">
-            {tag}
-          </p>
-        ))}
+    <div className="m-auto ">
+      <div>
+        <img
+          className="w-[289px] h-[320px] rounded-xl absolute "
+          src={image}
+        ></img>
       </div>
-
-      <h2 className="max-w=[344px] w-fit text-[24px] font-medium">{title}</h2>
-
-      <div className="flex items-center ">
-        <img width={36} height={36} src={user} className="rounded-full mt-5" />
-        <div className="flex">
-          <p className="text-[#97989F] font-medium text-[16px] ml-3 mr-5 ">
-            {name}
-          </p>
-          <div>{moment(date).format("ll")}</div>
+      <div className="ml-7 mb-7">
+        <div>
+          {tags.slice(0, 1).map((tag, index) => {
+            return (
+              <p
+                key={index}
+                className="relative mb-4 bg-[#4B6BFB] text-cyan-50 rounded-lg mt-[172px]  w-fit py-1 px-[10px]  "
+              >
+                {tag}
+              </p>
+            );
+          })}
+        </div>
+        <div>
+          <h2 className="relative text-fuchsia-50 w-[230px] h-[76px] mt-4">
+            {title}
+          </h2>
         </div>
       </div>
     </div>
