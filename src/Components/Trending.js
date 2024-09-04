@@ -37,7 +37,7 @@ const BlogTrending = (props) => {
     <div className="m-auto ">
       <div>
         <img
-          className="w-[289px] h-[320px] rounded-xl absolute "
+          className="w-[289px] h-[320px] rounded-xl absolute opacity-40] "
           src={image}
         ></img>
       </div>

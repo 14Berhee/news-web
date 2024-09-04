@@ -17,29 +17,42 @@ export default function Slider() {
   }
 
   const handleNextSlide = () => {
-    setCurrentSlideIndex((next) => next + 1);
+    if (currentSlideIndex < heros.length - 1) {
+      setCurrentSlideIndex((next) => next + 1);
+    } else {
+      setCurrentSlideIndex(0);
+    }
   };
   const handlePrevSlide = () => {
-    setCurrentSlideIndex((prev) => prev - 1);
+    if (currentSlideIndex < 0) {
+      setCurrentSlideIndex((prev) => prev - 1);
+    } else {
+      handleNextSlide(currentSlideIndex);
+    }
   };
+
+  const hero = heros[currentSlideIndex];
 
   return (
     <div>
-      {heros.map((hero, index) => {
-        if (index === currentSlideIndex) {
-          return (
-            <Hero
-              key={hero.id}
-              image={hero.cover_image}
-              tags={hero.tag_list}
-              title={hero.title}
-            />
-          );
-        }
-      })}
-      <div className="flex gap-2">
-        <button onClick={handlePrevSlide}>prev</button>
-        <button onClick={handleNextSlide}>next</button>
+      <Hero
+        key={hero.id}
+        image={hero.cover_image}
+        tags={hero.tag_list}
+        title={hero.title}
+      />
+
+      <div className="flex gap-2 mt-3 justify-end">
+        <img
+          className="w-10 h-10"
+          src="back.png"
+          onClick={handlePrevSlide}
+        ></img>
+        <img
+          className="w-10 h-10"
+          src="forward.png"
+          onClick={handleNextSlide}
+        ></img>
       </div>
     </div>
   );
@@ -58,12 +71,12 @@ const Hero = (props) => {
         borderRadius: "12px",
       }}
     >
-      <div className="w-[598px] h-[252px] bg-white rounded-xl mt-[335px] ">
-        <div className="w-[518px] h-124px px-10 mt-10">
+      <div className="w-[598px] h-[252px] bg-[#E8E8EA] rounded-xl mt-[335px] absolute ml-3    ">
+        <div className="w-[518px] h-124px px-10  ">
           <div>
             {tags.slice(3).map((tag) => {
               return (
-                <p className="mb-4 bg-[#4B6BFB] text-cyan-50 rounded-lg mt-[172px]  w-fit py-1 px-[10px] ">
+                <p className="mb-4 bg-[#4B6BFB] text-cyan-50 rounded-lg mt-10  w-fit py-1 px-[10px] ">
                   {tag}
                 </p>
               );
@@ -72,7 +85,7 @@ const Hero = (props) => {
           <div>
             <h2>{title}</h2>
           </div>
-          <div>{moment(date).format("ll")}</div>
+          <div className="mt-6">{moment(date).format("ll")}</div>
         </div>
       </div>
     </div>

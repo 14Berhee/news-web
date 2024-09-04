@@ -14,7 +14,7 @@ export default function Home() {
       </div>
 
       <div className="max-w-[1216px] m-auto mb-28">
-        <h1 className="max-w-screen-[1200px] text-[24px] font-bold mb-8">
+        <h1 className="max-w-screen-[1200px] text-[24px] font-bold mb-8 mt-28">
           Trending
         </h1>
         <Trending></Trending>
