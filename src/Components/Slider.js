@@ -71,7 +71,7 @@ const Hero = (props) => {
         borderRadius: "12px",
       }}
     >
-      <div className="w-[598px] h-[252px] bg-[#E8E8EA] rounded-xl mt-[335px] absolute ml-3    ">
+      <div className="w-[598px] h-[252px] bg-[#E8E8EA] rounded-xl mt-[335px] absolute ml-3 opacity-80   ">
         <div className="w-[518px] h-124px px-10  ">
           <div>
             {tags.slice(3).map((tag) => {

@@ -2,10 +2,12 @@ import Header from "../Components/Header";
 import BlogCard from "../Components/Blog";
 import Trending from "../Components/Trending";
 import Slider from "../Components/Slider";
+import FooterContent from "../Components/Footer-Content";
+import FooterCopyright from "../Components/Footer-Copyright";
 
 export default function Home() {
   return (
-    <div className="max-w-screen-2xl m-auto">
+    <div className="max-w-[1920px] m-auto">
       <div className="max-w-6xl m-auto">
         <Header></Header>
       </div>
@@ -24,6 +26,21 @@ export default function Home() {
           All Blog Post
         </h1>
         <BlogCard></BlogCard>
+        <div className="flex justify-center ">
+          <button className="w-[123px] h-[48px] bg-slate-200 rounded-lg text-[#696A75] mt-11  ">
+            Load More
+          </button>
+        </div>
+      </div>
+      <div className="bg-[#E8E8EA] h-[495px]  ">
+        <div className="w-[1215px] m-auto relative top-16">
+          <div>
+            <FooterContent />
+          </div>
+          <div className="w-[1215px] m-auto">
+            <FooterCopyright />
+          </div>
+        </div>
       </div>
     </div>
   );
