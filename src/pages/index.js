@@ -1,9 +1,9 @@
-import Header from "../Components/Header";
-import BlogCard from "../Components/Blog";
+import BlogCard from "../Components/BlogCard";
 import Trending from "../Components/Trending";
 import Slider from "../Components/Slider";
 import FooterContent from "../Components/Footer-Content";
 import FooterCopyright from "../Components/Footer-Copyright";
+import Header from "../Components/Header";
 
 export default function Home() {
   return (

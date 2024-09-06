@@ -1,10 +1,13 @@
 import useSWR from "swr";
 import moment from "moment";
-const url = " https://dev.to/api/articles";
+const url = " https://dev.to/api/articles/1988141";
+import { useRouter } from "next/router";
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Blog = () => {
   const { data, error, isLoading } = useSWR(url, fetcher);
+  const router = useRouter();
 
   if (isLoading) {
     return <p>isLoading</p>;
@@ -12,7 +15,9 @@ const Blog = () => {
   if (error) {
     return <p>Sorry we are connot fulfill this</p>;
   }
-  console.log(data);
+
+  const body_html = blogDetail?.body_html;
+
   return (
     <div className="grid grid-cols-3 mt-36 ">
       {data.map((blog) => {
@@ -39,6 +44,7 @@ const BlogCard = (props) => {
 
   return (
     <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto mt-5 ">
+      {parse(body_html)}
       <img src={image} className="h-60 rounded-lg mt-4 " />
       <div className="flex flex-wrap gap-2  ">
         {tags.map((tag, index) => (

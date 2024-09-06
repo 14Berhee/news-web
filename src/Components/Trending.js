@@ -1,5 +1,5 @@
 import useSWR from "swr";
-const url = "https://dev.to/api/articles?state=rising";
+const url = "https://dev.to/api/articles";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Trending = () => {
