@@ -1,13 +1,13 @@
 import useSWR from "swr";
+import Link from "next/link";
 import moment from "moment";
-const url = " https://dev.to/api/articles/1988141";
-import { useRouter } from "next/router";
+
+const url = "https://dev.to/api/articles/";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Blog = () => {
   const { data, error, isLoading } = useSWR(url, fetcher);
-  const router = useRouter();
 
   if (isLoading) {
     return <p>isLoading</p>;
@@ -16,21 +16,21 @@ const Blog = () => {
     return <p>Sorry we are connot fulfill this</p>;
   }
 
-  const body_html = blogDetail?.body_html;
-
   return (
     <div className="grid grid-cols-3 mt-36 ">
       {data.map((blog) => {
         return (
-          <BlogCard
-            key={blog.id}
-            tags={blog.tag_list}
-            image={blog.cover_image}
-            title={blog.title}
-            date={blog.published_at}
-            user={blog.user.profile_image}
-            name={blog.user.name}
-          />
+          <Link href={`blog/${blog.id}`}>
+            <BlogCard
+              key={blog.id}
+              tags={blog.tag_list}
+              image={blog.cover_image}
+              title={blog.title}
+              date={blog.published_at}
+              user={blog.user.profile_image}
+              name={blog.user.name}
+            />
+          </Link>
         );
       })}
     </div>
@@ -44,7 +44,6 @@ const BlogCard = (props) => {
 
   return (
     <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto mt-5 ">
-      {parse(body_html)}
       <img src={image} className="h-60 rounded-lg mt-4 " />
       <div className="flex flex-wrap gap-2  ">
         {tags.map((tag, index) => (
@@ -61,11 +60,11 @@ const BlogCard = (props) => {
 
       <div className="flex items-center ">
         <img width={36} height={36} src={user} className="rounded-full mt-5" />
-        <div className="flex">
+        <div className="flex ">
           <p className="text-[#97989F] font-medium text-[16px] ml-3 mr-5 ">
             {name}
           </p>
-          <div>{moment(date).format("ll")}</div>
+          <div className="text-[#97989F] ml-5">{moment(date).format("ll")}</div>
         </div>
       </div>
     </div>
