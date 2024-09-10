@@ -20,7 +20,7 @@ const Blog = () => {
     <div className="grid grid-cols-3 mt-36 ">
       {data.map((blog) => {
         return (
-          <Link href={`blog/${blog.id}`}>
+          <Link href={`blog/${blog.id}`} key={blog.id}>
             <BlogCard
               key={blog.id}
               tags={blog.tag_list}

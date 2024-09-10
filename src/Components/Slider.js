@@ -76,7 +76,10 @@ const Hero = (props) => {
           <div>
             {tags.slice(3).map((tag) => {
               return (
-                <p className="mb-4 bg-[#4B6BFB] text-cyan-50 rounded-lg mt-10  w-fit py-1 px-[10px] ">
+                <p
+                  key={tag}
+                  className="mb-4 bg-[#4B6BFB] text-cyan-50 rounded-lg mt-10  w-fit py-1 px-[10px] "
+                >
                   {tag}
                 </p>
               );

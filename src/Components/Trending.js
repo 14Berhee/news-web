@@ -18,7 +18,7 @@ const Trending = () => {
     <div className="flex max-w-[1231px] m-auto justify-center ">
       {data.slice(0, 4).map((blog2) => {
         return (
-          <Link href={`blog/${blog2.id}`}>
+          <Link href={`blog/${blog2.id}`} key={blog2.id}>
             <BlogTrending
               key={blog2.id}
               image={blog2.cover_image}
