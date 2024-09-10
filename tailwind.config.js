@@ -15,4 +15,16 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
+
+  safelist: [
+    "flex",
+    "flex-wrap",
+    "flex-col ",
+    "justify-center",
+    "items-center",
+    " grid ",
+    "grid-cols-3",
+    "justify-end",
+    "items-end",
+  ],
 };
