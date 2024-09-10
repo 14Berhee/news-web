@@ -11,7 +11,7 @@ export default function Contact() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam aab
+            aliqua. Ut enim ad minim veniam doll
           </p>
         </div>
         <div className="flex gap-6 mt-[30px] ">
