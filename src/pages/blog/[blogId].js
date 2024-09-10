@@ -23,12 +23,12 @@ const Huudas = () => {
         {blogDetail.title}
       </div>
       <div className="flex items-center w-[266px] h-[28px]">
-        <img
+        <img>
           width={36}
           height={36}
           src={blogDetail.user.profile_image}
           className="rounded-full mt-5 flex mb-4 "
-        />
+        </img>
 
         <div className="flex items-center  ">
           <div className="text-[#97989F] font-medium text-[16px] ml-2 py-1 ">

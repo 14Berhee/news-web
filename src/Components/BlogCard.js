@@ -37,6 +37,14 @@ const Blog = () => {
   );
 };
 
+// const All = () => {
+//   return (
+//     <div>
+//       <p>All</p>
+//     </div>
+//   );
+// };
+
 export default Blog;
 
 const BlogCard = (props) => {

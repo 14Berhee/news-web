@@ -1,6 +1,7 @@
 import BlogCard from "../Components/BlogCard";
 import Trending from "../Components/Trending";
 import Slider from "../Components/Slider";
+import Tags from "../Components/Tags";
 
 export default function Home() {
   return (
@@ -19,7 +20,9 @@ export default function Home() {
         <h1 className="max-w-screen-[1200px] text-[24px] font-bold mt-12">
           All Blog Post
         </h1>
+        <Tags></Tags>
         <BlogCard></BlogCard>
+
         <div className="flex justify-center ">
           <button className="w-[123px] h-[48px] bg-slate-200 rounded-lg text-[#696A75] mt-11  ">
             Load More
