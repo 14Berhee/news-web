@@ -26,5 +26,7 @@ module.exports = {
     "grid-cols-3",
     "justify-end",
     "items-end",
+    "absolut",
+    "bg",
   ],
 };

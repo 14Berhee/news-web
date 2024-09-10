@@ -22,7 +22,7 @@ const Huudas = () => {
       <div className="text-2xl max-w-[800px] h-[80px] font-bold text-[36px]">
         {blogDetail.title}
       </div>
-      <div className="flex items-center w-[266px] h-[28px]">
+      <div className="flex items-center w-[300spx] h-[28px]">
         <img
           width={36}
           height={36}

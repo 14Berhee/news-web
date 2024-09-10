@@ -14,7 +14,7 @@ export default function Contact() {
             aliqua. Ut enim ad minim veniam doll
           </p>
         </div>
-        <div className="flex gap-6 mt-[30px] ">
+        <div className="flex gap-[50px] mt-[30px] ">
           <div className="w-[294px] h-[133px] bg-[#f4f4f6] rounded-xl text-center p-4">
             <h1 className="w-[96px] h-[40px]">Address</h1>
             <p className="w-[260px] h-[52px]">
@@ -35,7 +35,7 @@ export default function Contact() {
             </h1>
           </div>
           <div className="flex flex-col mt-6">
-            <div className="flex gap-4">
+            <div className="flex gap-[28px]">
               <div>
                 <input
                   className="bg-[#FFFFFF]  w-[225px] h-10 rounded-md py-2 px-2  ;
@@ -69,6 +69,11 @@ export default function Contact() {
               />
             </div>
           </div>
+        </div>
+        <div>
+          <button className="w-[130px] h-[40px] bg-[#4B6BFB] text-[#FFFFFF] rounded-md text-base mb-11 ml-[35px] ">
+            Send Message
+          </button>
         </div>
       </div>
     </div>

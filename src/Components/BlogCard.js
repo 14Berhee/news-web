@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import Link from "next/link";
 import moment from "moment";
+import { useState } from "react";
 
 const url = "https://dev.to/api/articles/";
 
@@ -41,12 +42,16 @@ export default Blog;
 
 const BlogCard = (props) => {
   const { image, title, date, tags, user, name } = props;
+  const [visibleItems, setVisibleItems] = useState(3);
+  const loadMore = () => {
+    setVisibleItems((prevItems) => prevItems + 3);
+  };
 
   return (
     <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto mt-5 ">
-      <img src={image} className="h-60 rounded-lg mt-4 " />
+      <img src={image} className="h-60 rounded-lg mt-4 " alt="blog" />
       <div className="flex flex-wrap gap-2  ">
-        {tags.map((tag, index) => (
+        {tags.slice(0, visibleItems).map((tag, index) => (
           <p
             key={index}
             className="mb-4 bg-[#4B6BFB0D] text-[#4B6BFB] rounded-lg mt-7  w-fit py-1 px-[10px]  "
@@ -58,9 +63,14 @@ const BlogCard = (props) => {
 
       <h2 className="max-w=[344px] w-fit text-[24px] font-medium">{title}</h2>
 
-      <div className="flex items-center ">
-        <img width={36} height={36} src={user} className="rounded-full mt-5" />
-        <div className="flex ">
+      <div className="flex items-center mt-5 ">
+        <img
+          width={36}
+          height={36}
+          src={user}
+          className="rounded-full  flex "
+        />
+        <div className="flex  ">
           <p className="text-[#97989F] font-medium text-[16px] ml-3 mr-5 ">
             {name}
           </p>
