@@ -2,8 +2,12 @@ import BlogCard from "../Components/BlogCard";
 import Trending from "../Components/Trending";
 import Slider from "../Components/Slider";
 import Tags from "../Components/Tags";
+import { ThemeContext } from "../Components/ThemeContext";
+import { useContext } from "react";
 
 export default function Home() {
+  const light = useContext(ThemeContext);
+  console.log(light);
   return (
     <div className="max-w-[1920px] m-auto">
       <div className="max-w-[1216px] m-auto">
