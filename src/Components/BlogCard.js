@@ -18,8 +18,7 @@ const Blog = () => {
   }
 
   return (
-    // <div className="grid grid-cols-3 mt-36 ">
-    <div className="flex flex-wrap">
+    <div className="grid grid-cols-3 mt-36 ">
       {data.map((blog) => {
         return (
           <Link href={`blog/${blog.id}`} key={blog.id}>
@@ -36,7 +35,6 @@ const Blog = () => {
         );
       })}
     </div>
-    // </div>
   );
 };
 
