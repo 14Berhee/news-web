@@ -1,18 +1,7 @@
 import Link from "next/link";
-import useSWR from "swr";
 
-const url = "  https://dev.to/api/articles";
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-const Trending = () => {
-  const { data, error, isLoading } = useSWR(url, fetcher);
-
-  if (isLoading) {
-    return <p>isLoading</p>;
-  }
-  if (error) {
-    return <p>Sorry we are connot fulfill this</p>;
-  }
+const Trending = (props) => {
+  const { data } = props;
 
   return (
     <div className="flex max-w-[1231px] m-auto justify-center ">
@@ -53,7 +42,7 @@ const BlogTrending = (props) => {
               return (
                 <p
                   key={index}
-                  className="mb-4 bg-[#4B6BFB] text-[#FFFFFF] rounded-lg mt-7  w-fit py-1 px-[10px] "
+                  className="mb-4 bg-[#4B6BFB] text-[#FFFFFF] rounded-lg mt-7  w-fit py-1 px-[10px] hover:text-[#4B6BFB] hover:bg-[#FFFFFF] "
                 >
                   {tag}
                 </p>

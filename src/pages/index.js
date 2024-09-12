@@ -1,38 +1,49 @@
-import BlogCard from "../Components/BlogCard";
+import Blog from "../Components/BlogCard";
 import Trending from "../Components/Trending";
 import Slider from "../Components/Slider";
-import Tags from "../Components/Tags";
-import { ThemeContext } from "../Components/ThemeContext";
-import { useContext } from "react";
 
-export default function Home() {
-  const light = useContext(ThemeContext);
-  console.log(light);
+export default function Home(props) {
+  const { articles, tagList } = props;
+
   return (
     <div className="max-w-[1920px] m-auto">
       <div className="max-w-[1216px] m-auto">
-        <Slider />
+        <Slider data={articles} />
       </div>
 
       <div className="max-w-[1216px] m-auto mb-28">
         <h1 className="max-w-screen-[1200px] text-[24px] font-bold mb-8 mt-28">
           Trending
         </h1>
-        <Trending />
+        <Trending data={articles} />
       </div>
-      <div className="max-w-[1216px] m-auto">
-        <h1 className="max-w-screen-[1200px] text-[24px] font-bold mt-12">
+      <div className="max-w-[1216px] m-auto mt-[100px]">
+        <h1 className="max-w-screen-[1200px] text-[24px] font-bold ">
           All Blog Post
         </h1>
-        <Tags />
-        <BlogCard />
 
-        <div className="flex justify-center ">
-          <button className="w-[123px] h-[48px] bg-slate-200 rounded-lg text-[#696A75] mt-11  ">
-            Load More
-          </button>
-        </div>
+        <Blog blogs={articles} tagList={tagList} />
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const response = await fetch(`https://dev.to/api/articles`);
+    const tags = await fetch(`https://dev.to/api/tags`);
+    const articles = await response.json();
+    const tagList = await tags.json();
+    console.log(tagList);
+    return {
+      props: {
+        articles,
+        tagList,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }

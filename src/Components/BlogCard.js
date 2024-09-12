@@ -1,39 +1,65 @@
-import useSWR from "swr";
 import Link from "next/link";
 import moment from "moment";
 import { useState } from "react";
 
-const url = "https://dev.to/api/articles/";
+const Blog = (props) => {
+  const { blogs, tagList = [] } = props;
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const [visibleItems, setVisibleItems] = useState(6);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-const Blog = () => {
-  const { data, error, isLoading } = useSWR(url, fetcher);
+  const loadMore = () => {
+    setVisibleItems((prevItems) => prevItems + 6);
+    setIsExpanded(true);
+  };
 
-  if (isLoading) {
-    return <p>isLoading</p>;
-  }
-  if (error) {
-    return <p>Sorry we are connot fulfill this</p>;
-  }
+  const hasMoreItems = blogs.length > visibleItems;
+
+  console.log(tagList[0].name);
 
   return (
-    <div className="grid grid-cols-3 mt-36 ">
-      {data.map((blog) => {
-        return (
-          <Link href={`blog/${blog.id}`} key={blog.id}>
-            <BlogCard
-              key={blog.id}
-              tags={blog.tag_list}
-              image={blog.cover_image}
-              title={blog.title}
-              date={blog.published_at}
-              user={blog.user.profile_image}
-              name={blog.user.name}
-            />
-          </Link>
-        );
-      })}
+    <div className="mt-8 ">
+      <div className="flex gap-5">
+        <p>All</p>
+        <div className="gap-5 flex">
+          {tagList.map((tag, index) => {
+            return (
+              <p className="text-black " key={index}>
+                {tag.name}
+              </p>
+            );
+          })}
+        </div>
+      </div>
+      <div className="mb-8"></div>
+      <div className="flex flex-wrap gap-[20px]  ">
+        {blogs.slice(0, visibleItems).map((blog) => {
+          return (
+            <Link href={`blog/${blog.id}`} key={blog.id}>
+              <BlogCard
+                key={blog.id}
+                tags={blog.tag_list}
+                image={blog.cover_image}
+                title={blog.title}
+                date={blog.published_at}
+                user={blog.user.profile_image}
+                name={blog.user.name}
+              />
+            </Link>
+          );
+        })}
+        {hasMoreItems && (
+          <div className="m-auto">
+            <button
+              className="w-[123px] h-[48px] bg-slate-200 rounded-lg text-[#696A75] mt-11 hover:text-slate-200 hover:bg-[#696A75] "
+              onClick={isExpanded ? loadMore : loadMore}
+            >
+              {" "}
+              Load More
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -42,26 +68,22 @@ export default Blog;
 
 const BlogCard = (props) => {
   const { image, title, date, tags, user, name } = props;
-  const [visibleItems, setVisibleItems] = useState(3);
-  const loadMore = () => {
-    setVisibleItems((prevItems) => prevItems + 3);
-  };
 
   return (
-    <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto mt-5 ">
+    <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto  ">
       <img src={image} className="h-60 rounded-lg mt-4 " alt="blog" />
       <div className="flex flex-wrap gap-2  ">
-        {tags.slice(0, visibleItems).map((tag, index) => (
+        {tags.slice(0, 1).map((tag, index) => (
           <p
             key={index}
-            className="mb-4 bg-[#4B6BFB0D] text-[#4B6BFB] rounded-lg mt-7  w-fit py-1 px-[10px]  "
+            className="mb-4 bg-[#4B6BFB0D] text-[#4B6BFB] rounded-lg mt-7  w-fit py-1 px-[10px] hover:text-white hover:bg-[#4B6BFB]"
           >
             {tag}
           </p>
         ))}
       </div>
 
-      <h2 className="max-w=[344px] w-fit text-[24px] font-medium">{title}</h2>
+      <h2 className="max-w-[344px] w-fit text-[24px] font-medium">{title}</h2>
 
       <div className="flex items-center mt-5 ">
         <img
