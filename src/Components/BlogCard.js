@@ -19,7 +19,7 @@ const Blog = (props) => {
 
   return (
     <div className="mt-8 ">
-      <div className="flex gap-5">
+      <div className="flex gap-5d">
         <p>All</p>
         <div className="gap-5 flex">
           {tagList.map((tag, index) => {

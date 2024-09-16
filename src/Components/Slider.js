@@ -33,7 +33,7 @@ export default function Slider(props) {
         title={hero.title}
       />
 
-      <div className="flex gap-2 mt-3 justify-end">
+      <div className="flex gap-2 mt-3 justify-end max-w-[1216px] m-auto">
         <img
           className="w-10 h-10"
           src="back.png"
@@ -53,6 +53,7 @@ const Hero = (props) => {
   const { image, tags, title, date } = props;
   return (
     <div
+      className="max-w-[413px] h-[320px] md:max-w-[1216px]"
       style={{
         height: 600,
         backgroundImage: `url(${image})`,
@@ -60,9 +61,10 @@ const Hero = (props) => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         borderRadius: "12px",
+        margin: "auto",
       }}
     >
-      <div className="w-[598px] h-[252px] bg-[#E8E8EA] rounded-xl mt-[335px] absolute ml-3 opacity-80   ">
+      <div className=" max-w-[380px] bg-[#E8E8EA] rounded-xl mt-[335px] absolute ml-3 opacity-80  md:max-w-[598px] h-[252px] ">
         <div className="w-[518px] h-124px px-10  ">
           <div>
             {tags.slice(0, 1).map((tag) => {

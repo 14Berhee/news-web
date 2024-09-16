@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="flex max-w-6xl m-auto mt-8 h-[100px] items-center">
+    <div className=" flex mt-8 h-[100px] items-center max-w-[1920px] justify-center">
       <Link href={"/"}>
         <div className="mr-2">
           <svg
@@ -35,7 +35,7 @@ export default function Header() {
         <p>Meta</p>
         <p className="w-[52px] h-6 font-black">Blog</p>
       </div>
-      <div className="flex max-w-2xl ml-[498px] gap-10 ">
+      <div className="  max-w-2xl ml-[498px] gap-10 hidden md:flex   ">
         <Link href={"/"}>
           <p>Home</p>
         </Link>
@@ -46,13 +46,16 @@ export default function Header() {
           <p>Contact</p>
         </Link>
       </div>
-      <div>
+      <div className="hidden md:block">
         <input
-          className="bg-[#F4F4F5] ml-[243px] w-[166px] h-9 rounded-md py-2 px-2 gap-3 ;
+          className="bg-[#F4F4F5] ml-[243px] w-[166px] h-9 rounded-md py-2 px-2 gap-3 
 ]"
           type="text"
-          placeholder="Search.. "
+          placeholder="Search... "
         />
+      </div>
+      <div className="block ml-[183px] md:hidden">
+        <img src="menu.png" />
       </div>
     </div>
   );

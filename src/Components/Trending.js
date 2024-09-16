@@ -4,7 +4,7 @@ const Trending = (props) => {
   const { data } = props;
 
   return (
-    <div className="flex max-w-[1231px] m-auto justify-center ">
+    <div className="m-auto justify-center grid-cols-4 md:flex max-w-[1231px]   ">
       {data.slice(0, 4).map((blog2) => {
         return (
           <Link href={`blog/${blog2.id}`} key={blog2.id}>

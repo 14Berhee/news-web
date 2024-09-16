@@ -38,7 +38,7 @@ const Huudas = () => {
           </div>
         </div>
       </div>
-      <img src={blogDetail.cover_image} />
+      <img className="rounded-lg" src={blogDetail.cover_image} />
       <div class="prose">
         <Markdown rehypePlugins={[rehypeHighlight]}>{bodyMarkdown}</Markdown>
       </div>
