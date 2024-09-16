@@ -15,7 +15,7 @@ export default function Home(props) {
         <h1 className="max-w-screen-[1200px] text-[24px] font-bold mb-8 mt-28">
           Trending
         </h1>
-        // <Trending data={articles} />
+        <Trending data={articles} />
       </div>
       <div className=" m-auto mt-[100px]">
         <h1 className="max-w-screen-[1200px] text-[24px] font-bold ">
