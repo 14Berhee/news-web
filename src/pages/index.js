@@ -1,7 +1,6 @@
 import Blog from "../Components/BlogCard";
 import Trending from "../Components/Trending";
 import Slider from "../Components/Slider";
-import Timer from "../Components/Settime";
 
 export default function Home(props) {
   const { articles, tagList } = props;
@@ -11,21 +10,17 @@ export default function Home(props) {
       <div className=" m-auto">
         <Slider data={articles} />
       </div>
-      <div className=" m-auto mb-28">
+      <div className=" m-auto mb-28 w-[1216px]">
         <h1 className="max-w-screen-[1200px] text-[24px] font-bold mb-8 mt-28">
           Trending
         </h1>
         <Trending data={articles} />
       </div>
-      <div className=" m-auto mt-[100px]">
+      <div className=" m-auto mt-[100px] w-[1216px]">
         <h1 className="max-w-screen-[1200px] text-[24px] font-bold ">
           All Blog Post
         </h1>
         <Blog blogs={articles} tagList={tagList} />
-      </div>
-
-      <div>
-        <Timer></Timer>
       </div>
     </div>
   );

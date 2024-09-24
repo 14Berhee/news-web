@@ -1,6 +1,6 @@
 export default function FooterCopyright() {
   return (
-    <div className=" h-[95px] flex mt-[25px]   ">
+    <div className=" h-[95px] flex mt-[25px]  justify-center ">
       <div className="flex items-center w-[289px]  ">
         <svg
           width="36"

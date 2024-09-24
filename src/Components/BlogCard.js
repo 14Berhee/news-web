@@ -18,9 +18,9 @@ const Blog = (props) => {
   console.log(tagList[0].name);
 
   return (
-    <div className="mt-8 ">
+    <div className="mt-8 w-[1216px] m-auto ">
       <div className="flex gap-5d">
-        <p>All</p>
+        <p className="text-[#D4A373] mr-5">All</p>
         <div className="gap-5 flex">
           {tagList.map((tag, index) => {
             return (
@@ -32,7 +32,7 @@ const Blog = (props) => {
         </div>
       </div>
       <div className="mb-8"></div>
-      <div className="flex flex-wrap gap-[20px]  ">
+      <div className="flex flex-wrap w-[1216px] m-auto gap-5 ">
         {blogs.slice(0, visibleItems).map((blog) => {
           return (
             <Link href={`blog/${blog.id}`} key={blog.id}>
@@ -49,9 +49,9 @@ const Blog = (props) => {
           );
         })}
         {hasMoreItems && (
-          <div className="m-auto">
+          <div className=" flex-wrap hidden md:block m-auto">
             <button
-              className="w-[123px] h-[48px] bg-slate-200 rounded-lg text-[#696A75] mt-11 hover:text-slate-200 hover:bg-[#696A75] "
+              className="w-[123px] h-[48px] bg-slate-200 rounded-lg text-[#696A75] mt-11   hover:text-slate-200 hover:bg-[#696A75] "
               onClick={isExpanded ? loadMore : loadMore}
             >
               {" "}
