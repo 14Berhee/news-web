@@ -1,7 +1,21 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { TrendingSkeleton } from "./TrendingSkeleton";
 
 const Trending = (props) => {
   const { data } = props;
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  if (loading) {
+    return <TrendingSkeleton />;
+  }
 
   return (
     <div className="m-auto justify-center grid-cols-4 md:flex max-w-[1231px]   ">

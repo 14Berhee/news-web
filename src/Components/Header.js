@@ -8,7 +8,7 @@ export default function Header() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   if (loading) {
