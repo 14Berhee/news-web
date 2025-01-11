@@ -1,11 +1,21 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import moment from "moment";
+import { SliderSkeleton } from "./SliderSkeleton";
 
 export default function Slider(props) {
   const { data: heros } = props;
-
+  const [loading, setLoading] = useState(true);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <SliderSkeleton />;
+  }
 
   const handleNextSlide = () => {
     if (currentSlideIndex < heros.length - 1) {

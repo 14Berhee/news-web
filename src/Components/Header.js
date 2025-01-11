@@ -1,8 +1,22 @@
 import Link from "next/link";
+import { Skeleton } from "./Skeleton";
+import { useEffect, useState } from "react";
 
 export default function Header() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <Skeleton />;
+  }
   return (
     <div className=" flex mt-8 h-[100px] items-center max-w-[1920px] justify-center">
+      {loading && <Skeleton />}
       <Link href={"/"}>
         <div className="mr-2">
           <svg
