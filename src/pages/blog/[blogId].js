@@ -3,7 +3,8 @@ import useSWR from "swr";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import moment from "moment";
-import { BlogSkeleton } from "./blogSkeleton";
+import BlogForSkeleton from "./BlogForSkeleton";
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Huudas = () => {
@@ -13,7 +14,7 @@ const Huudas = () => {
   const { data: blogDetail = {}, isLoading } = useSWR(url, fetcher);
 
   if (isLoading) {
-    return <BlogSkeleton />;
+    return <BlogForSkeleton />;
   }
 
   const bodyMarkdown = blogDetail.body_markdown;

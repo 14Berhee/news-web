@@ -1,4 +1,4 @@
-export const BlogSkeleton = () => {
+const BlogForSkeleton = () => {
   return (
     <div className="mx-auto w-[655px] flex flex-col gap-10 justify-center mt-[100px]">
       <div className="w-[300px] h-[40px] bg-gray-300 rounded animate-pulse"></div>
@@ -18,3 +18,5 @@ export const BlogSkeleton = () => {
     </div>
   );
 };
+
+export default BlogForSkeleton;
