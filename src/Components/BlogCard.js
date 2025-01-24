@@ -1,6 +1,7 @@
 import Link from "next/link";
 import moment from "moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BlogCardSkeleton } from "./BlogCardSkeleton";
 
 const Blog = (props) => {
   const { blogs, tagList = [] } = props;
@@ -20,11 +21,14 @@ const Blog = (props) => {
   return (
     <div className="mt-8 w-[1216px] m-auto ">
       <div className="flex gap-5d">
-        <p className="text-[#D4A373] mr-5">All</p>
+        <p className="text-[#D4A373] mr-5 px-1 py-1">All</p>
         <div className="gap-5 flex">
           {tagList.map((tag, index) => {
             return (
-              <p className="text-black " key={index}>
+              <p
+                className="text-black hover:bg-orange-600 px-1 py-1 rounded-lg"
+                key={index}
+              >
                 {tag.name}
               </p>
             );
@@ -68,6 +72,17 @@ export default Blog;
 
 const BlogCard = (props) => {
   const { image, title, date, tags, user, name } = props;
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  if (loading) {
+    return <BlogCardSkeleton />;
+  }
 
   return (
     <div className="px-4 py-2 border border-solid rounded-2xl  h-[592px] w-[392px] p-4 m-auto  ">

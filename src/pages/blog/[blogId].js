@@ -3,6 +3,8 @@ import useSWR from "swr";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import moment from "moment";
+import { BlogTrendingSkeleton } from "@/Components/BlogTrendingSkeleton";
+import { BlogSkeleton } from "@/Components/blogSkeleton";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -10,10 +12,11 @@ const Huudas = () => {
   const router = useRouter();
   const blogId = router.query.blogId;
   const url = `https://dev.to/api/articles/${blogId}`;
-
   const { data: blogDetail = {}, isLoading } = useSWR(url, fetcher);
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) {
+    return <BlogSkeleton />;
+  }
 
   const bodyMarkdown = blogDetail.body_markdown;
 
