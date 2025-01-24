@@ -3,9 +3,7 @@ import useSWR from "swr";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import moment from "moment";
-import { BlogTrendingSkeleton } from "@/Components/BlogTrendingSkeleton";
-import { BlogSkeleton } from "@/Components/blogSkeleton";
-
+import { BlogSkeleton } from "./blogSkeleton";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Huudas = () => {
