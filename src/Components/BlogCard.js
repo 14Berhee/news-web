@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import moment from "moment";
 import { useState } from "react";
@@ -7,24 +9,46 @@ const Blog = (props) => {
 
   const [visibleItems, setVisibleItems] = useState(6);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedTag, setSelectedTag] = useState("");
+
+  const filteredBlog = selectedTag
+    ? blogs.filter((blog) => blog.tag_list.includes(selectedTag))
+    : blogs;
+
+  const handleFilteredBlog = (tag) => {
+    setSelectedTag(tag === selectedTag ? "" : tag);
+  };
 
   const loadMore = () => {
     setVisibleItems((prevItems) => prevItems + 6);
     setIsExpanded(true);
   };
 
-  const hasMoreItems = blogs.length > visibleItems;
+  const hasMoreItems = filteredBlog.length > visibleItems;
 
   console.log(tagList[0].name);
 
   return (
     <div className="mt-8 w-[1216px] m-auto ">
       <div className="flex gap-5d">
-        <p className="text-[#D4A373] mr-5">All</p>
+        <p
+          onClick={() => setSelectedTag("")}
+          className={`cursor-pointer mr-5 ${
+            selectedTag === ""
+              ? "text-[#D4A373]"
+              : "text-black hover:text-[#4B6BFB]"
+          }`}
+        >
+          All
+        </p>
         <div className="gap-5 flex">
           {tagList.map((tag, index) => {
             return (
-              <p className="text-black " key={index}>
+              <p
+                onClick={() => handleFilteredBlog(tag.name)}
+                className="text-black cursor-pointer hover:text-[#4B6BFB]  transition-all"
+                key={index}
+              >
                 {tag.name}
               </p>
             );
@@ -33,7 +57,7 @@ const Blog = (props) => {
       </div>
       <div className="mb-8"></div>
       <div className="flex flex-wrap w-[1216px] m-auto gap-5 ">
-        {blogs.slice(0, visibleItems).map((blog) => {
+        {filteredBlog.slice(0, visibleItems).map((blog) => {
           return (
             <Link href={`blog/${blog.id}`} key={blog.id}>
               <BlogCard
